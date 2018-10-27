@@ -57,24 +57,23 @@
         favoriteFoodButton();
     });
 
-    $(document).on("click", ".food-btn", favoriteFoodButton);
+  //  $(document).on("click", ".food-btn", favoriteFoodButton);
 
 
     favoriteFoodButton();
 
 
 
-    $("button").on("click", function () {
-        var Topics = $(this).attr("food-name");
+    $("button").on("click", function() {
+        var Topic = $(this).attr("food-name");
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-            Topics + "&api_key=cXoqpcJWM4PBynA5xExMQB2wEaiUte6d&limit=10";
+            Topic + "&api_key=cXoqpcJWM4PBynA5xExMQB2wEaiUte6d&limit=10";
 
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            //console.log(response);
-
+            
             var results = response.data
 
             for (var i = 0; i < results.length; i++) {
@@ -87,15 +86,16 @@
                 var foodImage = $("<img>");
 
                 foodImage.attr("src", results[i].images.fixed_height_still.url);
-                foodImage.attr("data-still", results[i].images.fixed_height_still.url);
+              foodImage.attr("data-still", results[i].images.fixed_height_still.url);
                 foodImage.attr("data-animate", results[i].images.fixed_height.url);
-                foodImage.attr("data-state", "still");
+               foodImage.attr("data-state", "still");
                 foodImage.addClass("gif");
 
                 foodDiv.append(p);
                 foodDiv.append(foodImage);
 
                 $("#gifs-appear-here").prepend(foodDiv);
+                
             }
         });
     });
