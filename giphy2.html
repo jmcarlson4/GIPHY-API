@@ -57,14 +57,14 @@
         favoriteFoodButton();
     });
 
-  //  $(document).on("click", ".food-btn", favoriteFoodButton);
+    //  $(document).on("click", ".food-btn", favoriteFoodButton);
 
 
     favoriteFoodButton();
 
 
 
-    $("button").on("click", function() {
+    $("#buttons-view").on("click", "button", function () {
         var Topic = $(this).attr("food-name");
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
             Topic + "&api_key=cXoqpcJWM4PBynA5xExMQB2wEaiUte6d&limit=10";
@@ -73,7 +73,7 @@
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            
+
             var results = response.data
 
             for (var i = 0; i < results.length; i++) {
@@ -86,31 +86,32 @@
                 var foodImage = $("<img>");
 
                 foodImage.attr("src", results[i].images.fixed_height_still.url);
-              foodImage.attr("data-still", results[i].images.fixed_height_still.url);
+                foodImage.attr("data-still", results[i].images.fixed_height_still.url);
                 foodImage.attr("data-animate", results[i].images.fixed_height.url);
-               foodImage.attr("data-state", "still");
+                foodImage.attr("data-state", "still");
                 foodImage.addClass("gif");
 
                 foodDiv.append(p);
                 foodDiv.append(foodImage);
 
                 $("#gifs-appear-here").prepend(foodDiv);
-                
+
             }
         });
     });
-            
 
-      //          $(".gif").on("click", function () {
-        //      var state = $(this).attr("data-state");
-          //  if ("data-state" === "still") {
-        //     $(this).attr("src", $(this).attr("data-animate"));
-          //  $(this).attr("data-state", "animate");
-            //    } else {
-              //    $(this).attr("src", $(this).attr("data-still"));
-           //   $(this).attr("data-state", "still");
-           // }
-        // });
+
+    $("#gifs-appear-here").on("click", ".gif", function () {
+        var state = $(this).attr("data-state");
+
+        if (state === "still") {
+            $(this).attr("src", $(this).attr("data-animate"));
+            $(this).attr("data-state", "animate");
+        } else {
+            $(this).attr("src", $(this).attr("data-still"));
+            $(this).attr("data-state", "still");
+        }
+    });
 
 </script>
 
