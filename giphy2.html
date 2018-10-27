@@ -73,7 +73,7 @@
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            console.log(response);
+            //console.log(response);
 
             var results = response.data
 
@@ -98,18 +98,19 @@
                 $("#gifs-appear-here").prepend(foodDiv);
             }
         });
+    });
             
 
       //          $(".gif").on("click", function () {
-        //        var state = $(this).attr("data-state");
-          //      if ("data-state" === "still") {
-            //        $(this).attr("src", $(this).attr("data-animate"));
-              //      $(this).attr("data-state", "animate");
-      //          } else {
-        //            $(this).attr("src", $(this).attr("data-still"));
-            //        $(this).attr("data-state", "still");
-          //      }
-         //   });
+        //      var state = $(this).attr("data-state");
+          //  if ("data-state" === "still") {
+        //     $(this).attr("src", $(this).attr("data-animate"));
+          //  $(this).attr("data-state", "animate");
+            //    } else {
+              //    $(this).attr("src", $(this).attr("data-still"));
+           //   $(this).attr("data-state", "still");
+           // }
+        // });
 
 </script>
 
